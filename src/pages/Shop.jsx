@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import ShopSidebar from "../components/ShopSidebar";
 import ProductCard from "../components/ProductCard";
 import { useIsMobile } from "../hooks/use-mobile";
@@ -202,10 +203,10 @@ const Shop = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 flex-grow">
         <h1 className="text-3xl font-bold mb-8">{getPageTitle()}</h1>
         
         <div className="flex flex-col md:flex-row gap-8">
@@ -265,6 +266,8 @@ const Shop = () => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };

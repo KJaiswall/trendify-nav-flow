@@ -82,13 +82,18 @@ const SearchBar = () => {
 
       {/* Search Suggestions */}
       {showSuggestions && suggestions.length > 0 && (
-        <ul className="search-suggestions">
+        <ul className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden">
           {suggestions.map((suggestion) => (
             <li
               key={suggestion.id}
               onClick={() => handleSuggestionClick(suggestion)}
+              className="px-4 py-2 cursor-pointer hover:bg-gray-100 flex items-center"
             >
-              {suggestion.name}
+              <Search className="h-4 w-4 text-gray-400 mr-2" />
+              <div>
+                <span className="font-medium">{suggestion.name}</span>
+                <span className="text-xs text-gray-500 ml-2">in {suggestion.category}</span>
+              </div>
             </li>
           ))}
         </ul>
