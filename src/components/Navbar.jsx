@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Search, Heart, ShoppingBag, User, ChevronDown, Menu, X } from "lucide-react";
@@ -119,12 +118,31 @@ const Navbar = () => {
                 <PopoverTrigger>
                   <User className="h-6 w-6 text-trendify-charcoal hover:text-trendify-teal transition-colors cursor-pointer" />
                 </PopoverTrigger>
-                <PopoverContent className="w-48 p-0">
-                  <div className="flex flex-col">
-                    <Link to="/account" className="px-4 py-2 hover:bg-gray-100 transition-colors">Sign In / Sign Up</Link>
-                    <Link to="/account" className="px-4 py-2 hover:bg-gray-100 transition-colors">My Account</Link>
-                    <Link to="/orders" className="px-4 py-2 hover:bg-gray-100 transition-colors">My Orders</Link>
-                    <button className="text-left px-4 py-2 hover:bg-gray-100 transition-colors">Logout</button>
+                <PopoverContent className="w-56 p-0 bg-white border border-gray-200 shadow-lg rounded-lg">
+                  <div className="flex flex-col py-2">
+                    <Link 
+                      to="/account" 
+                      className="px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-trendify-teal transition-colors"
+                    >
+                      Sign In / Sign Up
+                    </Link>
+                    <Link 
+                      to="/account" 
+                      className="px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-trendify-teal transition-colors"
+                    >
+                      My Account
+                    </Link>
+                    <Link 
+                      to="/orders" 
+                      className="px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-trendify-teal transition-colors"
+                    >
+                      My Orders
+                    </Link>
+                    <button 
+                      className="text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-trendify-teal transition-colors border-t border-gray-100"
+                    >
+                      Logout
+                    </button>
                   </div>
                 </PopoverContent>
               </Popover>
