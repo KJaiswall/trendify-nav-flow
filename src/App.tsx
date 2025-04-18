@@ -15,6 +15,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Collections from "./pages/Collections";
 import About from "./pages/About";
+import Account from "./pages/Account";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/collections" element={<Collections />} />
             <Route path="/about" element={<About />} />
+            <Route path="/account" element={<Account />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

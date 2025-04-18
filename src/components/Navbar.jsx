@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import { Search, Heart, ShoppingBag, User, ChevronDown, Menu, X } from "lucide-react";
 import SearchBar from "./SearchBar";
 import { useIsMobile } from "../hooks/use-mobile";
+import { 
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(3);
@@ -108,9 +113,21 @@ const Navbar = () => {
                 <ShoppingBag className="h-6 w-6 text-trendify-charcoal hover:text-trendify-teal transition-colors" />
                 {cartCount > 0 && <span className="badge">{cartCount}</span>}
               </Link>
-              <Link to="/account">
-                <User className="h-6 w-6 text-trendify-charcoal hover:text-trendify-teal transition-colors" />
-              </Link>
+              
+              {/* User Account Popover */}
+              <Popover>
+                <PopoverTrigger>
+                  <User className="h-6 w-6 text-trendify-charcoal hover:text-trendify-teal transition-colors cursor-pointer" />
+                </PopoverTrigger>
+                <PopoverContent className="w-48 p-0">
+                  <div className="flex flex-col">
+                    <Link to="/account" className="px-4 py-2 hover:bg-gray-100 transition-colors">Sign In / Sign Up</Link>
+                    <Link to="/account" className="px-4 py-2 hover:bg-gray-100 transition-colors">My Account</Link>
+                    <Link to="/orders" className="px-4 py-2 hover:bg-gray-100 transition-colors">My Orders</Link>
+                    <button className="text-left px-4 py-2 hover:bg-gray-100 transition-colors">Logout</button>
+                  </div>
+                </PopoverContent>
+              </Popover>
 
               {/* Mobile Menu Toggle */}
               {isMobile && (
@@ -189,6 +206,13 @@ const Navbar = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
+              </Link>
+              <Link 
+                to="/account" 
+                className="text-trendify-charcoal hover:text-trendify-teal transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Sign In / Sign Up
               </Link>
             </div>
           </div>
