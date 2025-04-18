@@ -1,10 +1,10 @@
+
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import RecommendationSection from "../components/RecommendationSection";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -176,61 +176,46 @@ const Index = () => {
     setPersonalizedRecommendations(mockPersonalizedRecommendations);
   }, []);
 
-  const fashionQuotes = [
-    {
-      quote: "Style is a way to say who you are without having to speak",
-      author: "Rachel Zoe",
-      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
-    },
-    {
-      quote: "Fashion is the armor to survive the reality of everyday life",
-      author: "Bill Cunningham",
-      image: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop"
-    },
-    {
-      quote: "Fashion is about dressing according to what's fashionable. Style is more about being yourself",
-      author: "Oscar de la Renta",
-      image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1200&auto=format&fit=crop"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-trendify-lightGray">
       <Navbar />
       
-      {/* Hero Section with Fashion Quote Slider */}
-      <section className="relative bg-gradient-to-r from-trendify-teal to-teal-700 text-white">
-        <Carousel className="w-full" opts={{ loop: true }}>
-          <CarouselContent>
-            {fashionQuotes.map((item, index) => (
-              <CarouselItem key={index}>
-                <div className="relative h-[500px] w-full">
-                  <div className="absolute inset-0">
-                    <img 
-                      src={item.image} 
-                      alt={`Fashion ${index + 1}`} 
-                      className="w-full h-full object-cover opacity-40"
-                    />
-                  </div>
-                  <div className="relative h-full flex items-center justify-center">
-                    <div className="text-center max-w-4xl mx-auto px-4">
-                      <p className="text-3xl md:text-4xl font-serif italic mb-4">
-                        "{item.quote}"
-                      </p>
-                      <p className="text-xl font-light">- {item.author}</p>
-                    </div>
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="absolute inset-x-4 top-1/2 flex items-center justify-between -translate-y-1/2">
-            <CarouselPrevious className="bg-white/80 hover:bg-white" />
-            <CarouselNext className="bg-white/80 hover:bg-white" />
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-trendify-teal to-teal-700 text-white py-20 px-4">
+        <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between">
+          <div className="md:w-1/2 mb-8 md:mb-0">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Summer Collection 2025
+            </h1>
+            <p className="text-lg mb-8 max-w-md">
+              Discover the latest trends and elevate your style with our exclusive summer collection.
+            </p>
+            <div className="flex space-x-4">
+              <button 
+                onClick={() => navigate("/shop")}
+                className="bg-white text-trendify-teal px-6 py-3 rounded-md font-medium hover:bg-opacity-90 transition-colors"
+              >
+                Shop Now
+              </button>
+              <button 
+                onClick={() => navigate("/collections")}
+                className="border border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:bg-opacity-20 transition-colors"
+              >
+                View Collections
+              </button>
+            </div>
           </div>
-        </Carousel>
+          
+          <div className="md:w-1/2">
+            <img 
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=870&auto=format&fit=crop" 
+              alt="Summer Collection" 
+              className="rounded-lg shadow-lg max-h-96 object-cover w-full"
+            />
+          </div>
+        </div>
       </section>
-
+      
       {/* Categories Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">

@@ -63,7 +63,7 @@ const Account = () => {
       <Navbar />
       <div className="flex-grow container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto">
-          <Card className="shadow-xl border-gray-200">
+          <Card className="shadow-lg border-gray-200">
             <CardHeader className="space-y-2 pb-6">
               <CardTitle className="text-2xl font-bold text-center text-gray-800">
                 {activeTab === "signin" ? "Sign In" : "Sign Up"}
@@ -75,39 +75,19 @@ const Account = () => {
               </CardDescription>
             </CardHeader>
 
-            {/* Role selection tabs with gradient backgrounds */}
-            <div className="px-8 mb-6">
+            {/* Role selection tabs */}
+            <div className="px-6 mb-6">
               <Tabs 
                 defaultValue="user" 
                 value={role}
                 onValueChange={(value) => setRole(value as UserRole)}
                 className="w-full"
               >
-                <TabsList className="grid w-full grid-cols-4 bg-gray-100/80 p-1 rounded-lg">
-                  <TabsTrigger 
-                    value="user" 
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-teal-400 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
-                  >
-                    User
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="admin" 
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-purple-400 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
-                  >
-                    Admin
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="vendor" 
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-orange-400 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
-                  >
-                    Vendor
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="superAdmin" 
-                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500 data-[state=active]:to-red-400 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
-                  >
-                    Super
-                  </TabsTrigger>
+                <TabsList className="grid w-full grid-cols-4 bg-gray-100 p-1 rounded-lg">
+                  <TabsTrigger value="user" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">User</TabsTrigger>
+                  <TabsTrigger value="admin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Admin</TabsTrigger>
+                  <TabsTrigger value="vendor" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Vendor</TabsTrigger>
+                  <TabsTrigger value="superAdmin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Super</TabsTrigger>
                 </TabsList>
               </Tabs>
             </div>
@@ -118,19 +98,9 @@ const Account = () => {
               value={activeTab}
               onValueChange={(value) => setActiveTab(value as "signin" | "signup")}
             >
-              <TabsList className="grid w-full grid-cols-2 bg-gray-100/80 mx-8 rounded-lg mb-6">
-                <TabsTrigger 
-                  value="signin" 
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-trendify-teal data-[state=active]:to-teal-400 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
-                >
-                  Sign In
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="signup" 
-                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-trendify-teal data-[state=active]:to-teal-400 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-300"
-                >
-                  Sign Up
-                </TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 bg-gray-100 p-1 mx-6 rounded-lg">
+                <TabsTrigger value="signin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Sign In</TabsTrigger>
+                <TabsTrigger value="signup" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Sign Up</TabsTrigger>
               </TabsList>
 
               {/* Sign In Form */}
