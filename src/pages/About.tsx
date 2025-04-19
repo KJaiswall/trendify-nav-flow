@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -210,33 +209,45 @@ const About = () => {
             </div>
           </div>
 
-          {/* Timeline Section */}
+          {/* Updated Journey Section */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-10 text-center text-trendify-charcoal">Our Journey</h2>
-            <div className="space-y-12">
-              {[
-                { year: "2020", title: "Trendify Founded", description: "Started as an online-only boutique fashion store." },
-                { year: "2021", title: "Global Expansion", description: "Expanded to 10 countries and partnered with 20+ brands." },
-                { year: "2022", title: "Sustainability Initiative", description: "Launched our eco-friendly product line and carbon offset program." },
-                { year: "2023", title: "Brand Recognition", description: "Won 'Best Online Fashion Retailer' award." },
-                { year: "2024", title: "Milestone Achievement", description: "Reached 50,000+ happy customers worldwide." }
-              ].map((item, index) => (
-                <div key={index} className="flex">
-                  <div className="flex flex-col items-center mr-6">
-                    <div className="bg-trendify-teal rounded-full h-12 w-12 flex items-center justify-center text-white font-bold">
-                      {index + 1}
+            <div className="relative">
+              <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-teal-100 via-teal-200 to-teal-100 transform -translate-y-1/2 rounded-full"></div>
+              <div className="relative space-y-8 md:space-y-0 md:grid md:grid-cols-5 md:gap-4">
+                {[
+                  { year: "2020", title: "Trendify Founded", description: "Started as an online-only boutique fashion store." },
+                  { year: "2021", title: "Global Expansion", description: "Expanded to 10 countries and partnered with 20+ brands." },
+                  { year: "2022", title: "Sustainability Initiative", description: "Launched our eco-friendly product line and carbon offset program." },
+                  { year: "2023", title: "Brand Recognition", description: "Won 'Best Online Fashion Retailer' award." },
+                  { year: "2024", title: "Milestone Achievement", description: "Reached 50,000+ happy customers worldwide." }
+                ].map((item, index) => (
+                  <div key={index} className="relative">
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold z-10 shadow-lg transform transition-transform hover:scale-110 hover:rotate-12">
+                        {index + 1}
+                      </div>
+                      {index < 4 && (
+                        <div className="hidden md:block absolute top-6 left-[calc(50%+1.5rem)] w-[calc(100%-3rem)] h-0.5">
+                          <div className="w-full h-full flex items-center justify-center">
+                            <div className="w-full h-0.5 bg-teal-200"></div>
+                            <div className="absolute right-0 transform translate-x-1/2">
+                              <div className="w-3 h-3 transform rotate-45 border-t-2 border-r-2 border-teal-400"></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      <div className="mt-4 bg-white rounded-lg shadow-lg p-6 transform transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <span className="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-sm font-medium mb-2">
+                          {item.year}
+                        </span>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
+                        <p className="text-gray-600">{item.description}</p>
+                      </div>
                     </div>
-                    {index < 4 && <div className="h-full w-0.5 bg-gray-200 my-2"></div>}
                   </div>
-                  <div className="pt-1">
-                    <span className="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-sm font-medium mb-2">
-                      {item.year}
-                    </span>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
