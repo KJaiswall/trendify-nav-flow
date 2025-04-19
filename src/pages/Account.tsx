@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Facebook, Mail, Github } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -31,24 +31,18 @@ const Account = () => {
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would authenticate with a backend
     toast({
       title: "Sign in attempted",
       description: `Attempted login as ${role} with email: ${email}`,
     });
-    // This would navigate on successful auth
-    // navigate("/"); 
   };
 
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would register with a backend
     toast({
       title: "Account created",
       description: `Created ${role} account for email: ${email}`,
     });
-    // This would navigate on successful registration
-    // navigate("/");
   };
 
   const handleSocialLogin = (provider: string) => {
@@ -66,33 +60,16 @@ const Account = () => {
           <Card className="shadow-lg border-gray-200">
             <CardHeader className="space-y-2 pb-6">
               <CardTitle className="text-2xl font-bold text-center text-gray-800">
-                {activeTab === "signin" ? "Sign In" : "Sign Up"}
+                {activeTab === "signin" ? "Welcome Back" : "Create Account"}
               </CardTitle>
               <CardDescription className="text-center text-gray-600">
                 {activeTab === "signin" 
-                  ? "Sign in to your account to continue" 
-                  : "Create a new account to get started"}
+                  ? "Sign in to your account to continue shopping" 
+                  : "Join us to start your shopping journey"}
               </CardDescription>
             </CardHeader>
 
-            {/* Role selection tabs */}
-            <div className="px-6 mb-6">
-              <Tabs 
-                defaultValue="user" 
-                value={role}
-                onValueChange={(value) => setRole(value as UserRole)}
-                className="w-full"
-              >
-                <TabsList className="grid w-full grid-cols-4 bg-gray-100 p-1 rounded-lg">
-                  <TabsTrigger value="user" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">User</TabsTrigger>
-                  <TabsTrigger value="admin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Admin</TabsTrigger>
-                  <TabsTrigger value="vendor" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Vendor</TabsTrigger>
-                  <TabsTrigger value="superAdmin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Super</TabsTrigger>
-                </TabsList>
-              </Tabs>
-            </div>
-
-            {/* Sign in/Sign up tabs */}
+            {/* Tabs for Sign In/Sign Up */}
             <Tabs 
               defaultValue="signin" 
               value={activeTab}
@@ -102,6 +79,23 @@ const Account = () => {
                 <TabsTrigger value="signin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Sign In</TabsTrigger>
                 <TabsTrigger value="signup" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Sign Up</TabsTrigger>
               </TabsList>
+
+              {/* Role Selection */}
+              <div className="px-6 mt-6">
+                <Tabs 
+                  defaultValue="user" 
+                  value={role}
+                  onValueChange={(value) => setRole(value as UserRole)}
+                  className="w-full"
+                >
+                  <TabsList className="grid w-full grid-cols-4 bg-gray-100 p-1 rounded-lg">
+                    <TabsTrigger value="user" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">User</TabsTrigger>
+                    <TabsTrigger value="admin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Admin</TabsTrigger>
+                    <TabsTrigger value="vendor" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Vendor</TabsTrigger>
+                    <TabsTrigger value="superAdmin" className="data-[state=active]:bg-white data-[state=active]:text-trendify-teal data-[state=active]:shadow-sm">Super</TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
 
               {/* Sign In Form */}
               <TabsContent value="signin">
@@ -168,18 +162,17 @@ const Account = () => {
                   </CardContent>
                 </form>
 
-                <CardFooter className="flex flex-col space-y-6 pt-0 px-6 pb-6">
-                  <div className="relative w-full">
+                {/* Social Login Options */}
+                <div className="px-6 pb-6">
+                  <div className="relative w-full my-6">
                     <div className="absolute inset-0 flex items-center">
                       <span className="w-full border-t border-gray-200" />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-white px-2 text-gray-500">
-                        Or continue with
-                      </span>
+                      <span className="bg-white px-2 text-gray-500">Or continue with</span>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 w-full">
+                  <div className="grid grid-cols-2 gap-4">
                     <Button 
                       variant="outline" 
                       onClick={() => handleSocialLogin("Google")}
@@ -202,10 +195,10 @@ const Account = () => {
                       Facebook
                     </Button>
                   </div>
-                </CardFooter>
+                </div>
               </TabsContent>
 
-              {/* Sign Up Form with improved spacing */}
+              {/* Sign Up Form */}
               <TabsContent value="signup">
                 <form onSubmit={handleSignUp}>
                   <CardContent className="space-y-6 pt-6">
@@ -335,18 +328,17 @@ const Account = () => {
                   </CardContent>
                 </form>
 
-                <CardFooter className="flex flex-col space-y-6 pt-0 px-6 pb-6">
-                  <div className="relative w-full">
+                {/* Social Sign Up Options */}
+                <div className="px-6 pb-6">
+                  <div className="relative w-full my-6">
                     <div className="absolute inset-0 flex items-center">
                       <span className="w-full border-t border-gray-200" />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-white px-2 text-gray-500">
-                        Or sign up with
-                      </span>
+                      <span className="bg-white px-2 text-gray-500">Or sign up with</span>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 w-full">
+                  <div className="grid grid-cols-2 gap-4">
                     <Button 
                       variant="outline" 
                       onClick={() => handleSocialLogin("Google")}
@@ -369,7 +361,7 @@ const Account = () => {
                       Facebook
                     </Button>
                   </div>
-                </CardFooter>
+                </div>
               </TabsContent>
             </Tabs>
           </Card>
