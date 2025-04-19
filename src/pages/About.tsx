@@ -1,130 +1,34 @@
+
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Award, Users, Globe, ShoppingBag, Sparkles, Leaf, Heart } from "lucide-react";
+import { Users, Globe, ShoppingBag, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState("story");
-
   const stats = [
     { 
       label: "Started In", 
       value: "2020", 
-      progress: 100, 
       icon: <Sparkles className="h-6 w-6 text-amber-500" />
     },
     { 
       label: "Happy Customers", 
       value: "50K+", 
-      progress: 85, 
       icon: <Users className="h-6 w-6 text-pink-500" /> 
     },
     { 
       label: "Countries", 
       value: "30+", 
-      progress: 75, 
       icon: <Globe className="h-6 w-6 text-blue-500" /> 
     },
     { 
       label: "Brands", 
       value: "100+", 
-      progress: 90, 
       icon: <ShoppingBag className="h-6 w-6 text-green-500" /> 
     },
   ];
-
-  const tabs = [
-    { id: "story", label: "Our Story" },
-    { id: "mission", label: "Mission & Vision" },
-    { id: "values", label: "Our Values" }
-  ];
-
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case "story":
-        return (
-          <div className="space-y-6 animate-fade-in">
-            <p className="text-gray-700 leading-relaxed">
-              Founded in 2020, Trendify was born out of a passion for fashion and a desire to make quality clothing accessible to everyone. 
-              What started as a small online boutique has grown into a global brand serving customers worldwide.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              Our journey began with a simple vision: to create a shopping experience that combines quality, affordability, and sustainability. 
-              Over the years, we've grown from a small team of passionate fashion enthusiasts to a global brand with presence in over 30 countries.
-            </p>
-            <div className="mt-8">
-              <img 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200" 
-                alt="Our Story" 
-                className="rounded-lg shadow-md w-full h-64 object-cover"
-              />
-            </div>
-          </div>
-        );
-      case "mission":
-        return (
-          <div className="space-y-6 animate-fade-in">
-            <p className="text-gray-700 leading-relaxed">
-              <span className="text-xl font-semibold text-trendify-teal block mb-3">Our Mission</span>
-              To provide high-quality, sustainable fashion that empowers individuals to express themselves confidently while making responsible choices for our planet.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              <span className="text-xl font-semibold text-trendify-teal block mb-3">Our Vision</span>
-              To become the world's most loved, innovative, and sustainable fashion brand, where everyone feels welcome and can find their perfect style.
-            </p>
-            <div className="mt-8">
-              <img 
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1200" 
-                alt="Mission & Vision" 
-                className="rounded-lg shadow-md w-full h-64 object-cover"
-              />
-            </div>
-          </div>
-        );
-      case "values":
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
-            <Card className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all">
-              <div className="bg-gradient-to-r from-cyan-50 to-teal-100 h-2"></div>
-              <CardContent className="p-6">
-                <div className="bg-gradient-to-br from-teal-50 to-white rounded-full h-12 w-12 flex items-center justify-center mb-4">
-                  <Award className="h-6 w-6 text-trendify-teal" />
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-trendify-teal">Quality</h3>
-                <p className="text-gray-700">We never compromise on quality. Each product is carefully crafted to ensure durability and comfort.</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all">
-              <div className="bg-gradient-to-r from-amber-50 to-orange-100 h-2"></div>
-              <CardContent className="p-6">
-                <div className="bg-gradient-to-br from-amber-50 to-white rounded-full h-12 w-12 flex items-center justify-center mb-4">
-                  <Leaf className="h-6 w-6 text-amber-500" />
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-amber-600">Sustainability</h3>
-                <p className="text-gray-700">We are committed to reducing our environmental footprint through sustainable practices and responsible sourcing.</p>
-              </CardContent>
-            </Card>
-            
-            <Card className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all">
-              <div className="bg-gradient-to-r from-rose-50 to-pink-100 h-2"></div>
-              <CardContent className="p-6">
-                <div className="bg-gradient-to-br from-rose-50 to-white rounded-full h-12 w-12 flex items-center justify-center mb-4">
-                  <Heart className="h-6 w-6 text-trendify-coral" />
-                </div>
-                <h3 className="text-lg font-bold mb-2 text-trendify-coral">Inclusivity</h3>
-                <p className="text-gray-700">We celebrate diversity and create products for people of all shapes, sizes, and backgrounds.</p>
-              </CardContent>
-            </Card>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
@@ -142,9 +46,9 @@ const About = () => {
                   </p>
                   <Button 
                     className="bg-white text-trendify-teal hover:bg-teal-50 w-fit"
-                    onClick={() => setActiveTab("story")}
+                    onClick={() => window.location.href = "/shop"}
                   >
-                    Our Story
+                    Shop Now
                   </Button>
                 </div>
                 <div className="md:w-1/2">
@@ -177,77 +81,10 @@ const About = () => {
                         <h3 className="text-xl font-bold text-gray-800">{stat.label}</h3>
                       </div>
                     </div>
-                    <p className="text-3xl font-bold mb-4 text-trendify-teal">{stat.value}</p>
-                    <Progress value={stat.progress} className="h-2" />
+                    <p className="text-3xl font-bold text-trendify-teal">{stat.value}</p>
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-
-          {/* Interactive Tabs Section */}
-          <div className="bg-white rounded-xl shadow-md p-6 md:p-10 mb-16">
-            <div className="flex overflow-x-auto space-x-2 mb-8 pb-2 border-b">
-              {tabs.map(tab => (
-                <Button
-                  key={tab.id}
-                  variant={activeTab === tab.id ? "default" : "outline"}
-                  className={`rounded-full ${
-                    activeTab === tab.id 
-                      ? "bg-trendify-teal text-white hover:bg-trendify-teal/90" 
-                      : "text-gray-600 hover:text-trendify-teal"
-                  }`}
-                  onClick={() => setActiveTab(tab.id)}
-                >
-                  {tab.label}
-                </Button>
-              ))}
-            </div>
-            
-            <div className="min-h-[300px]">
-              {renderTabContent()}
-            </div>
-          </div>
-
-          {/* Updated Journey Section */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-10 text-center text-trendify-charcoal">Our Journey</h2>
-            <div className="relative">
-              <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-teal-100 via-teal-200 to-teal-100 transform -translate-y-1/2 rounded-full"></div>
-              <div className="relative space-y-8 md:space-y-0 md:grid md:grid-cols-5 md:gap-4">
-                {[
-                  { year: "2020", title: "Trendify Founded", description: "Started as an online-only boutique fashion store." },
-                  { year: "2021", title: "Global Expansion", description: "Expanded to 10 countries and partnered with 20+ brands." },
-                  { year: "2022", title: "Sustainability Initiative", description: "Launched our eco-friendly product line and carbon offset program." },
-                  { year: "2023", title: "Brand Recognition", description: "Won 'Best Online Fashion Retailer' award." },
-                  { year: "2024", title: "Milestone Achievement", description: "Reached 50,000+ happy customers worldwide." }
-                ].map((item, index) => (
-                  <div key={index} className="relative">
-                    <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold z-10 shadow-lg transform transition-transform hover:scale-110 hover:rotate-12">
-                        {index + 1}
-                      </div>
-                      {index < 4 && (
-                        <div className="hidden md:block absolute top-6 left-[calc(50%+1.5rem)] w-[calc(100%-3rem)] h-0.5">
-                          <div className="w-full h-full flex items-center justify-center">
-                            <div className="w-full h-0.5 bg-teal-200"></div>
-                            <div className="absolute right-0 transform translate-x-1/2">
-                              <div className="w-3 h-3 transform rotate-45 border-t-2 border-r-2 border-teal-400"></div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                      <div className="mt-4 bg-white rounded-lg shadow-lg p-6 transform transition-all hover:-translate-y-1 hover:shadow-xl">
-                        <span className="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-sm font-medium mb-2">
-                          {item.year}
-                        </span>
-                        <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
-                        <p className="text-gray-600">{item.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
@@ -281,3 +118,4 @@ const About = () => {
 };
 
 export default About;
+
